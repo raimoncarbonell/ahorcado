@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        
+        <title>PRIMEROS PASOS CON BRACKETS</title>
+    
+       
+    </head>
+    <body>
+        <form>
+        
+            
+         <label for="errores">Error</label><br>
+         <input type=number name="n2" id="errores" required><br>
+            
+        <label for="lletrasD">Resultado</label><br>
+         <input type=text name="res" id="lletrasD" required><br>
+            
+        
+        <label for="letraad">Palabra</label><br>
+         <input type=text name="res" id="letraad" required><br>
+            
+        
+            
+            
+            
+            
+            <input type="button" onclick="jugar()" value="JUGAR">
+        
+        </form>
+        
+        
+        
+        <script>
+        
+            var palabra=["hola", "mesa","tablero", "quinto"];
+            
+            
+            
+            
+            function jugar()
+            {
+               var tablero=['-'];
+                var i = parseInt(Math.random()*4);
+                var contador=0;
+                var contadorAci=0;
+                
+                var palabraes=palabra[i];
+                var c = document.getElementById("letraad");
+                var e = document.getElementById("errores");
+                var f = document.getElementById("lletrasD");
+                
+                
+                var ac=false;
+                f.value="";
+                e.value=0;
+                c.value="";
+                
+                
+               
+                for (i=1;i<palabraes.length;i++)
+                    {
+                        tablero.push("-");
+                        c.value=tablero;
+                    }
+                
+                
+                while(contador<=6)
+                {
+                    var l=prompt ("entra lletra");
+                   
+                    for (var k=0;k<palabraes.length;k++)
+                     {
+                        if(l==palabraes[k])
+                            {
+                               
+                                tablero[k]=l;
+                               contadorAci++;
+                               ac=true;
+                            }
+                      
+              
+                    }
+                    c.value=tablero;
+                    if (!ac)   contador++;
+                    e.value=contador;
+                    if(ac) ac=false;
+                    if (contadorAci==palabraes.length)
+                    {
+                        f.value+=l+"-";
+                        alert("Has Ganado");
+                        c.value="";
+                        return;
+              
+                    }
+                    if (contador==6)
+                    {
+                        f.value+=l+"-";
+                        alert("has perdido");
+                        c.value="";
+                        return;
+                       
+
+                    }
+                    f.value+=l+"-";
+                   
+                }
+    }
+            
+            
+           
+        </script>
+    </body>
+</html>
